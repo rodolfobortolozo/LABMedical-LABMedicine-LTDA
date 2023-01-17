@@ -1,0 +1,142 @@
+<div fxLayout="column" fxLayoutAlign="center none">
+    <div fxFlex="100%">
+        <h4>Preencha os campos para cadastrar</h4>
+        <mat-card>
+            <mat-card-content>
+                <div>
+                    <h4>Identificação</h4>
+                </div>
+                <form [formGroup]="formPatient" (ngSubmit)="onSubmit()">
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Nome Completo</mat-label>
+                        <input matInput placeholder="Nome Completo" formControlName="nome">
+                    </mat-form-field>
+
+                    <mat-form-field class="select" appearance="fill">
+                        <mat-label>Genero</mat-label>
+                        <mat-select formControlName="genero">
+                            <mat-option *ngFor=" let genero of GENEROS " [value]="genero.genero">
+                                {{genero.descricao}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="select" appearance="fill">
+                        <mat-label>Data de nascimento</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="dtaNascimento">
+                        <mat-hint>DD/MM/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Cpf</mat-label>
+                        <input matInput placeholder="Cpf" formControlName="nroCpf">
+                    </mat-form-field>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Rg</mat-label>
+                        <input matInput placeholder="Rg" formControlName="nroRg">
+                    </mat-form-field>
+
+                    <mat-form-field class="select" appearance="fill">
+                        <mat-label>Estado Civil</mat-label>
+                        <mat-select formControlName="estadoCivil">
+                            <mat-option *ngFor=" let estcivil of ESTADOCIVIL " [value]="estcivil.estcivil">
+                                {{estcivil.descricao}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Telefone</mat-label>
+                        <input matInput placeholder="Telefone" formControlName="telefone">
+                    </mat-form-field>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>E-Mail</mat-label>
+                        <input matInput placeholder="E-Mail" formControlName="email" type="email">
+                    </mat-form-field>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Naturalidade</mat-label>
+                        <input matInput placeholder="Naturalidade" formControlName="naturalidade">
+                    </mat-form-field>
+
+                    <div>
+                        <h5>Convênio</h5>
+                    </div>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Convênio</mat-label>
+                        <input matInput placeholder="Convênio" formControlName="convenio">
+                    </mat-form-field>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Numero da Carteira</mat-label>
+                        <input matInput placeholder="Numero da Carteira" formControlName="nroCarteira">
+                    </mat-form-field>
+
+                    <mat-form-field class="select" appearance="fill">
+                        <mat-label>Validade</mat-label>
+                        <input matInput [matDatepicker]="picker2" formControlName="dtaValidade">
+                        <mat-hint>DD/MM/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                    <div>
+                        <h5>Dados Endereço</h5>
+                    </div>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Cep</mat-label>
+                        <input matInput placeholder="Cep" formControlName="cep" [(ngModel)]="inputCep">
+                    </mat-form-field>
+
+                    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+                        type="button" (click)="retornoCep()">
+                        <mat-icon>explore</mat-icon>
+                    </button>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Cidade</mat-label>
+                        <input matInput placeholder="Cidade" formControlName="cidade">
+                    </mat-form-field>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Estado</mat-label>
+                        <input matInput placeholder="Estado" formControlName="estado">
+                    </mat-form-field>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Logradouro</mat-label>
+                        <input matInput placeholder="Logradouro" formControlName="logradouro">
+                    </mat-form-field>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Número</mat-label>
+                        <input matInput placeholder="Número" formControlName="numero">
+                    </mat-form-field>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Complemento</mat-label>
+                        <input matInput placeholder="Complemento" formControlName="complemento">
+                    </mat-form-field>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Bairro</mat-label>
+                        <input matInput placeholder="Bairro" formControlName="bairro">
+                    </mat-form-field>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Ponto de Referência</mat-label>
+                        <input matInput placeholder="Ponto de Referência" formControlName="pontoReferencia">
+                    </mat-form-field>
+                    <div>
+                        <button mat-raised-button color="primary" type="submit">Cadastrar</button>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
