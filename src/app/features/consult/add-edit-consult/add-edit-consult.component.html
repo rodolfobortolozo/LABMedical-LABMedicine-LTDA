@@ -1,43 +1,58 @@
 <div class="container" fxLayoutAlign="center none">
     <div fxFlex="95%">
-        <div>
-            <lab-search-patient></lab-search-patient>
-        </div>
-        <mat-card>
+        <form [formGroup]="formConsult" (ngSubmit)="onSubmit()">
+            <mat-card>
+                <mat-card-content>
+                    <div>
+                        <h4>Identificação do Paciente</h4>
+                    </div>
+                    <select formControlName="idPatient">
+                        <option *ngFor="let patient of patients" [value]=patient.id>{{ patient.nome | uppercase }}
+                        </option>
+                    </select>
+                </mat-card-content>
+            </mat-card>
 
-            <h4>Consulta de [Paciente]</h4>
-            <mat-card-content>
-                <div fxLayout="row">
-                    <mat-form-field class="margin-r-20" appearance="fill" fxFlex="70%">
-                        <mat-label>Motivo da Consulta</mat-label>
-                        <input matInput placeholder="Nome Completo" formControlName="nome">
-                    </mat-form-field>
+            <mat-card>
 
-                    <mat-form-field class="margin-r-20" appearance="fill" fxFlex="30%">
-                        <mat-label>Data da Consulta</mat-label>
-                        <input matInput [matDatepicker]="picker">
-                        <mat-hint>DD/MM/YYYY</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
-                </div>
-                <div fxLayout="column">
-                    <mat-form-field appearance="fill" fxFlex="100%">
-                        <mat-label>Descrição do Problema</mat-label>
-                        <textarea matInput placeholder="Descrição do Problema" formControlName="nome"
-                            rows="10"></textarea>
-                    </mat-form-field>
-                    <mat-form-field appearance="fill" fxFlex="100%">
-                        <mat-label>Medicação Receitada</mat-label>
-                        <textarea matInput placeholder="Medicação Receitada" formControlName="nome" rows="5"></textarea>
-                    </mat-form-field>
-                    <mat-form-field appearance="fill" fxFlex="100%">
-                        <mat-label>Dosagem e Precauções</mat-label>
-                        <textarea matInput placeholder="Dosagem e Precauções" formControlName="nome"
-                            rows="5"></textarea>
-                    </mat-form-field>
-                </div>
-            </mat-card-content>
-        </mat-card>
+                <h4>Consulta de [Paciente]</h4>
+                <mat-card-content>
+                    <div fxLayout="row">
+                        <mat-form-field class="margin-r-20" appearance="fill" fxFlex="70%">
+                            <mat-label>Motivo da Consulta</mat-label>
+                            <input matInput placeholder="Nome Completo" formControlName="motivo">
+                        </mat-form-field>
+
+                        <mat-form-field class="margin-r-20" appearance="fill" fxFlex="30%">
+                            <mat-label>Data da Consulta</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="dtaConsulta">
+                            <mat-hint>DD/MM/YYYY</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="column">
+                        <mat-form-field appearance="fill" fxFlex="100%">
+                            <mat-label>Descrição do Problema</mat-label>
+                            <textarea matInput placeholder="Descrição do Problema" formControlName="descricao"
+                                rows="10"></textarea>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" fxFlex="100%">
+                            <mat-label>Medicação Receitada</mat-label>
+                            <textarea matInput placeholder="Medicação Receitada" formControlName="medicacao"
+                                rows="5"></textarea>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" fxFlex="100%">
+                            <mat-label>Dosagem e Precauções</mat-label>
+                            <textarea matInput placeholder="Dosagem e Precauções" formControlName="dosagem"
+                                rows="5"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <button mat-raised-button color="primary" type="submit">Cadastrar</button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
     </div>
 </div>
