@@ -34,6 +34,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { FlexModule } from '@angular/flex-layout/flex';
 
 // Alterar Data para Portugues
 export const MY_FORMATS = {
@@ -80,6 +81,7 @@ export const MY_FORMATS = {
     MatSortModule,
     MatRadioModule,
     MatNativeDateModule,
+    FlexModule,
   ],
   exports: [
     CommonModule,
@@ -112,6 +114,7 @@ export const MY_FORMATS = {
     MatSortModule,
     MatRadioModule,
     MatNativeDateModule,
+    FlexModule,
   ],
 
   // Utiliza Data e idioma portugues

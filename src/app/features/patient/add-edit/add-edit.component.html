@@ -1,12 +1,13 @@
-<div fxLayout="column" fxLayoutAlign="center none">
-    <div fxFlex="100%">
-        <h4>Preencha os campos para cadastrar</h4>
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+    <div fxFlex="95%">
         <mat-card>
+            <h4>Preencha os campos para cadastrar</h4>
             <mat-card-content>
                 <div>
                     <h4>Identificação</h4>
                 </div>
                 <form [formGroup]="formPatient" (ngSubmit)="onSubmit()">
+
                     <mat-form-field class="edit" appearance="fill">
                         <mat-label>Nome Completo</mat-label>
                         <input matInput placeholder="Nome Completo" formControlName="nome">

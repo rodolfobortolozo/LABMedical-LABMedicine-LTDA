@@ -29,20 +29,20 @@
 
 .navbar-sidenav-container {
   /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
-             causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+           causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
   flex: 1;
 }
 
 .navbar-is-mobile .navbar-sidenav-container {
   /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
-             `<body>` to be our scrolling element for mobile layouts. */
+           `<body>` to be our scrolling element for mobile layouts. */
   flex: 1 0 auto;
 }
 
 /*Set sidenav width*/
 
 mat-sidenav {
-  min-width: 200px !important;
+  min-width: 180px !important;
   border-right: 1px solid #eee;
   box-shadow: 6px 0 6px rgba(0, 0, 0, 0.1);
   /* background-color:rgb(63, 81, 181); */
