@@ -71,23 +71,21 @@ export class AddEditComponent {
   }
 
   ngOnInit(): void {
-    //this.getAllUser();
     this.createForm(this.patient);
   }
 
   clearForm() {
-    //this.getAllUser();
     this.formPatient.reset();
     this.patient = {} as Patient;
   }
 
   onSubmit() {
     this.savePatient(this.formPatient.value);
+    console.log(this.formPatient.valid);
   }
 
   savePatient(patient: Patient) {
-    this.patientService.savePatient(patient).subscribe(() => this.clearForm);
-    console.log(patient);
+    this.patientService.savePatient(patient).subscribe(() => this.clearForm());
   }
 
   //Constantes
