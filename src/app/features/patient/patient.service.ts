@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, retry, throwError } from 'rxjs';
-import { Patient } from 'src/app/core/model/patient';
+import { Patient } from 'src/app/shared/model/patient';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
