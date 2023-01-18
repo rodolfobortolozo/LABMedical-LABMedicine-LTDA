@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from 'src/app/shared/layout/layout.component';
-import { AddEditComponent } from './add-edit-patient/add-edit.component';
+import { AddEditConsultComponent } from './add-edit-consult/add-edit-consult.component';
 
 const routes: Routes = [
   {
@@ -10,8 +10,8 @@ const routes: Routes = [
     children: [
       {
         path: 'add',
-        title: 'LABMedical - Paciente',
-        component: AddEditComponent,
+        title: 'LABMedical - Consulta',
+        component: AddEditConsultComponent,
       },
     ],
   },
@@ -21,4 +21,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PatientRoutingModule {}
+export class ConsultRoutingModule {}

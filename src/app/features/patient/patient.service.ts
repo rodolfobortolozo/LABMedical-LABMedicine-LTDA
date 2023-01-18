@@ -26,6 +26,12 @@ export class PatientService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  getAllPatient(): Observable<Patient[]> {
+    return this.httpClient
+      .get<Patient[]>(this.url, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

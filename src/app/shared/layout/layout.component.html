@@ -73,7 +73,7 @@
                         Cadastrar
                     </p>
                 </a>
-                <a mat-list-item [routerLink]="['/typography']" routerLinkActive="active">
+                <a mat-list-item [routerLink]="['/']" routerLinkActive="active">
                     <p mat-line>
                         <mat-icon mat-list-icon>
                             menu
@@ -83,6 +83,18 @@
                 </a>
 
                 <mat-divider></mat-divider>
+
+                <h3 mat-subheader>Exames</h3>
+
+                <a mat-list-item [routerLink]="['/consult/add']" routerLinkActive="active">
+                    <p mat-line>
+                        <mat-icon mat-list-icon>
+                            menu
+                        </mat-icon>
+                        Cadastrar Consulta
+                    </p>
+                </a>
+
 
                 <a id="push-bottom" mat-list-item [routerLink]="['/about']" routerLinkActive="active">
 
