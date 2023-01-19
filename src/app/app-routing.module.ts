@@ -13,6 +13,11 @@ const routes: Routes = [
       import('./features/consult/consult.module').then((m) => m.ConsultModule),
   },
   {
+    path: 'exam',
+    loadChildren: () =>
+      import('./features/exam/exam.module').then((m) => m.ExamModule),
+  },
+  {
     path: 'home',
     loadChildren: () =>
       import('./features/home/home.module').then((m) => m.HomeModule),

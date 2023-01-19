@@ -1,0 +1,64 @@
+<div class="container" fxLayoutAlign="center none">
+    <div fxFlex="95%">
+        <form [formGroup]="formExam" (ngSubmit)="onSubmit()">
+            <mat-card>
+                <mat-card-content>
+                    <div>
+                        <h4>Identificação do Paciente</h4>
+                    </div>
+                    <select formControlName="idPatient">
+                        <option *ngFor="let patient of patients" [value]=patient.id>{{ patient.nome | uppercase }}
+                        </option>
+                    </select>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card>
+
+                <h4>Exame de [Paciente]</h4>
+                <mat-card-content>
+                    <div fxLayout="row">
+                        <mat-form-field class="margin-r-20" appearance="fill" fxFlex="70%">
+                            <mat-label>Nome do exame</mat-label>
+                            <input matInput placeholder="Nome do exame" formControlName="exame">
+                        </mat-form-field>
+
+                        <mat-form-field class="margin-r-20" appearance="fill" fxFlex="30%">
+                            <mat-label>Data do Exame</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="dtaExame">
+                            <mat-hint>DD/MM/YYYY</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row">
+                        <mat-form-field class="margin-r-20" appearance="fill" fxFlex="100%">
+                            <mat-label>Tipo do exame</mat-label>
+                            <input matInput placeholder="Tipo do exame" formControlName="tipo">
+                        </mat-form-field>
+                        <mat-form-field class="margin-r-20" appearance="fill" fxFlex="50%">
+                            <mat-label>Laboratório</mat-label>
+                            <input matInput placeholder="Laboratório" formControlName="laboratorio">
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field class="margin-r-20" appearance="fill" fxFlex="100%">
+                            <mat-label>Url do documento do Exame</mat-label>
+                            <input matInput placeholder="Url do documento do Exame" formControlName="url">
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field appearance="fill" fxFlex="100%">
+                            <mat-label>Resultado do Exame</mat-label>
+                            <textarea matInput placeholder="Resultado do Exame" formControlName="resultado"
+                                rows="5"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <button mat-raised-button color="primary" type="submit">Cadastrar</button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</div>

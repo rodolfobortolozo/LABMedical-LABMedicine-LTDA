@@ -7,6 +7,7 @@ export const environment = {
   URL_API: 'http://localhost:3000/',
   API_PATIENT: 'patient/',
   API_CONSULT: 'consult/',
+  API_EXAM: 'exam/',
 
   //VIA CEP
   API_CEP: 'https://viacep.com.br/ws',
