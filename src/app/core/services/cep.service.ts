@@ -6,7 +6,7 @@ import {
 import { Injectable } from '@angular/core';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Cep } from '../model/cep';
+import { Cep } from '../../shared/model/cep';
 
 @Injectable({
   providedIn: 'root',

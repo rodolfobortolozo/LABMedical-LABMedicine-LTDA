@@ -8,6 +8,7 @@ export const environment = {
   API_PATIENT: 'patient/',
   API_CONSULT: 'consult/',
   API_EXAM: 'exam/',
+  API_USER: 'user/',
 
   //VIA CEP
   API_CEP: 'https://viacep.com.br/ws',
