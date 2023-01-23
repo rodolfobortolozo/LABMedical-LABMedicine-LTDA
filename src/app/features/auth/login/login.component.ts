@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/app/shared/model/user';
+import { NotificationService } from 'src/app/shared/service/notification.service';
+import { AddEditUserComponent } from '../add-edit-user/add-edit-user.component';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -14,7 +17,9 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private notificationService: NotificationService,
+    public dialog: MatDialog
   ) {}
 
   createForm(user: User) {
@@ -28,16 +33,17 @@ export class LoginComponent {
     const email = this.formLogin.get('email')?.value;
     const passowrd = this.formLogin.get('password')?.value;
     this.authService.login(email, passowrd).subscribe((ret) => {
-      console.log('Rodolfo' + ret.nome);
+      alert(JSON.stringify(ret));
+      if ((ret[0].sucesso = true)) {
+        this.notificationService.openSnackBar(`Seja Bem-Vindo ${ret[0].nome}`);
+      } else {
+        this.notificationService.openSnackBar('Usuário ou Senha Inválidos');
+      }
     });
   }
 
-  teste() {
-    this.authService
-      .login('rodolfobortolozo@gmail.com', '123456')
-      .subscribe((ret) => {
-        console.log('Rodolfo' + ret.nome);
-      });
+  openAddUser() {
+    this.dialog.open(AddEditUserComponent);
   }
 
   ngOnInit() {

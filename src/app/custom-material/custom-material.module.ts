@@ -82,6 +82,7 @@ export const MY_FORMATS = {
     MatRadioModule,
     MatNativeDateModule,
     FlexModule,
+    MatFormFieldModule,
   ],
   exports: [
     CommonModule,
@@ -115,6 +116,7 @@ export const MY_FORMATS = {
     MatRadioModule,
     MatNativeDateModule,
     FlexModule,
+    MatFormFieldModule,
   ],
 
   // Utiliza Data e idioma portugues

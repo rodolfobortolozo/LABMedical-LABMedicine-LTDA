@@ -32,6 +32,26 @@ export class PatientService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  getPatientById(id: Number): Observable<Patient[]> {
+    return this.httpClient
+      .get<Patient[]>(`${this.url}/${id}`)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  updatePatient(patient: Patient): Observable<Patient[]> {
+    return this.httpClient
+      .put<Patient[]>(
+        `${this.url}/${patient.id}`,
+        JSON.stringify(patient),
+        this.httpOptions
+      )
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  deletePatient(id: Number): Observable<Patient[]> {
+    return this.httpClient.delete<Patient[]>(`${this.url}/${id}`);
+  }
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

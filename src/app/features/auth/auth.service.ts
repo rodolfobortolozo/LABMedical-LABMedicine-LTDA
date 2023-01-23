@@ -27,6 +27,12 @@ export class AuthService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  saveUser(user: User): Observable<User[]> {
+    return this.httpClient
+      .post<User[]>(this.url, JSON.stringify(user), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
   getUserLogin(email: string, password: string): Observable<User[]> {
     return this.httpClient
       .get<User[]>(
@@ -43,12 +49,12 @@ export class AuthService {
           if (user.email === email && user.senha === password) {
             localStorage.setItem('user', JSON.stringify(user));
             localStorage.setItem('token', user.email + user.senha + user.nome); // Token Ficticio com email senha e nome tudo junto
-            this.router.navigate(['']);
             user.sucesso = true;
+            this.router.navigate(['']);
           } else {
-            this.router.navigate(['/login']);
-            localStorage.removeItem('user');
             user.sucesso = false;
+            //this.router.navigate(['/login']);
+            localStorage.removeItem('user');
             localStorage.removeItem('token');
           }
         });
@@ -57,16 +63,19 @@ export class AuthService {
   }
 
   getCurrentUser(): any {
-    return localStorage.getItem('user');
+    const user = localStorage.getItem('user');
+    return user ? user : '{}';
   }
+
   getCurrentToken(): any {
-    return localStorage.getItem('token');
+    const token = localStorage.getItem('token');
+    return token ? token : null;
   }
 
   logout(): void {
-    this.router.navigate(['/login']);
     localStorage.removeItem('user');
     localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 
   handleError(error: HttpErrorResponse) {

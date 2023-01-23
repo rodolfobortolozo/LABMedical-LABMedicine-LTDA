@@ -1,46 +1,70 @@
-<div class="container login-container" fxLayout="row" fxLayoutAlign="center center">
-    <form [formGroup]="formLogin" (ngSubmit)="onSubmit()" fxFlex="30%" fxFlex.sm="50%" fxFlex.xs="90%">
-        <mat-card>
-            <mat-card-title>LabMedical</mat-card-title>
-            <mat-card-subtitle>Log in</mat-card-subtitle>
-            <mat-card-content>
-
-                <mat-form-field class="full-width">
-                    <input id="emailInput" matInput placeholder="E-mail" formControlName="email" autocomplete="email"
-                        type="email">
-
-                    <mat-error id="invalidEmailError">
-                        Digite um Email Válido
-                    </mat-error>
-                    <mat-error id="requiredEmailError">
-                        Email é
-                        <strong>Obrigatório</strong>
-                    </mat-error>
-
-                </mat-form-field>
-
-                <mat-form-field class="full-width">
-                    <input id="passwordInput" matInput placeholder="Senha" formControlName="password" type="password"
-                        autocomplete="current-password">
-                    <mat-error id="requiredPasswordError">
-                        Senha é
-                        <strong>Obrigatório</strong>
-                    </mat-error>
-                </mat-form-field>
-
-                <div class="full-width">
-                    <mat-slide-toggle>Lembrar meu E-mail</mat-slide-toggle>
-                </div>
-
-            </mat-card-content>
-
-            <mat-card-actions class="login-actions">
-                <button mat-raised-button id="login" color="primary">Entrar</button>
-                <button mat-button id="resetPassword">Alterar a Senha</button>
-            </mat-card-actions>
-
-        </mat-card>
-
-        <mat-progress-bar></mat-progress-bar>
-    </form>
+<div fxLayout="row" fxLayoutAlign="end center">
+    <div>
+        <mat-card-subtitle>Não Possui Conta?</mat-card-subtitle>
+    </div>
+    <div>
+        <mat-card-actions>
+            <button mat-stroked-button id="login" color="primary" (click)="openAddUser()">Criar Conta</button>
+        </mat-card-actions>
+    </div>
 </div>
+
+<div class=" container login-container" fxLayout="row" fxLayoutAlign="center center">
+
+    <div class="img-login">
+        <img src="../../../../assets/img-login.png" width="680" height="">
+    </div>
+    <div fxFlex="20%" fxFlex.sm="50%" fxFlex.xs="90%">
+        <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+            <mat-card>
+                <mat-card-title>LabMedical</mat-card-title>
+                <mat-card-subtitle>Log in</mat-card-subtitle>
+                <mat-card-content>
+
+                    <mat-form-field class="full-width">
+                        <input id="email" matInput placeholder="E-mail" formControlName="email" autocomplete="email"
+                            type="email">
+
+                        <mat-error id="invalidEmailError">
+                            Digite um Email Válido
+                        </mat-error>
+                        <mat-error id="requiredEmailError">
+                            Email é
+                            <strong>Obrigatório</strong>
+                        </mat-error>
+
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <input id="password" matInput placeholder="Senha" formControlName="password" type="password"
+                            autocomplete="current-password">
+                        <mat-error id="requiredPasswordError">
+                            Senha é
+                            <strong>Obrigatório</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div class="full-width">
+                        <mat-slide-toggle>Lembrar meu E-mail</mat-slide-toggle>
+                    </div>
+
+                </mat-card-content>
+
+                <mat-card-actions>
+                    <button mat-raised-button id="login" color="primary" class="login-actions">Entrar</button>
+                </mat-card-actions>
+                <mat-card-actions class="login-actions">
+                    <button mat-button id="resetPassword" class="reset-password">Alterar a Senha</button>
+                </mat-card-actions>
+
+            </mat-card>
+
+            <mat-progress-bar></mat-progress-bar>
+        </form>
+    </div>
+</div>
+<!--  -->
+<!-- <div >
+    <lab-add-edit-user></lab-add-edit-user>
+</div> -->
+<!--  -->

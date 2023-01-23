@@ -10,13 +10,16 @@ import { SharedModule } from './shared/shared.module';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { CustomMaterialModule } from './custom-material/custom-material.module';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule, // Modulo Compartilhado
+    SharedModule,
+    CustomMaterialModule,
     RouterModule,
     HttpClientModule,
   ],

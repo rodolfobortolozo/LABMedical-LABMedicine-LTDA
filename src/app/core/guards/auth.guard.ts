@@ -9,7 +9,7 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router, private authService: AuthService) {}
 
   canActivate() {
-    const user = JSON.parse(this.authService.getCurrentUser());
+    const user = JSON.parse(this.authService?.getCurrentUser());
     const token = this.authService.getCurrentToken();
     const loginValid = user.email + user.senha + user.nome;
 
