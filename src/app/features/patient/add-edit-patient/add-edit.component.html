@@ -136,6 +136,7 @@
                     <div>
                         <button mat-raised-button color="primary" type="submit">{{
                             patientId?"Alterar":"Salvar"}}</button>
+
                         <button mat-raised-button color="warn" [disabled]="!patientId"
                             (click)="deletePatient(patientId)">Deletar</button>
                     </div>

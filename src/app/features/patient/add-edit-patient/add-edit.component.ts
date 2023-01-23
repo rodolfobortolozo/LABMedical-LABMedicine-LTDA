@@ -5,6 +5,7 @@ import { CepService } from 'src/app/core/services/cep.service';
 import { PatientService } from 'src/app/features/patient/patient.service';
 import { Patient } from '../../../shared/model/patient';
 import { ActivatedRoute } from '@angular/router';
+import { NotificationService } from 'src/app/shared/service/notification.service';
 
 @Component({
   selector: 'lab-add-edit',
@@ -24,7 +25,8 @@ export class AddEditComponent {
     private formBuilder: FormBuilder,
     private patientService: PatientService,
     private cepService: CepService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private notificationService: NotificationService
   ) {}
 
   retornoCep(): void {
@@ -96,9 +98,9 @@ export class AddEditComponent {
   }
 
   updatePatient(patient: Patient) {
-    this.patientService
-      .updatePatient(patient)
-      .subscribe(() => this.clearForm());
+    this.patientService.updatePatient(patient).subscribe(() => {
+      this.notificationService.openSnackBar('Paciente Alterado');
+    });
   }
 
   getPatientById(id: number) {
@@ -108,7 +110,11 @@ export class AddEditComponent {
   }
 
   deletePatient(id: Number) {
-    this.patientService.deletePatient(id).subscribe();
+    this.patientService
+      .deletePatient(id)
+      .subscribe(() =>
+        this.notificationService.openSnackBar('Paciente Excluido')
+      );
   }
   //Constantes
   GENEROS = [
