@@ -26,6 +26,32 @@ export class ConsultService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  getAllConsult(): Observable<Consult[]> {
+    return this.httpClient
+      .get<Consult[]>(this.url, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  getConsultById(id: Number): Observable<Consult[]> {
+    return this.httpClient
+      .get<Consult[]>(`${this.url}/${id}`)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  updateConsult(consult: Consult): Observable<Consult[]> {
+    return this.httpClient
+      .put<Consult[]>(
+        `${this.url}/${consult.id}`,
+        JSON.stringify(consult),
+        this.httpOptions
+      )
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  deleteConsult(id: Number): Observable<Consult[]> {
+    return this.httpClient.delete<Consult[]>(`${this.url}/${id}`);
+  }
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

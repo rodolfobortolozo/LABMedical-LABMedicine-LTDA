@@ -26,6 +26,32 @@ export class ExamService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  getAllExam(): Observable<Exam[]> {
+    return this.httpClient
+      .get<Exam[]>(this.url, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  getExamById(id: Number): Observable<Exam[]> {
+    return this.httpClient
+      .get<Exam[]>(`${this.url}/${id}`)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  updateExam(exam: Exam): Observable<Exam[]> {
+    return this.httpClient
+      .put<Exam[]>(
+        `${this.url}/${exam.id}`,
+        JSON.stringify(exam),
+        this.httpOptions
+      )
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  deleteExam(id: Number): Observable<Exam[]> {
+    return this.httpClient.delete<Exam[]>(`${this.url}/${id}`);
+  }
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

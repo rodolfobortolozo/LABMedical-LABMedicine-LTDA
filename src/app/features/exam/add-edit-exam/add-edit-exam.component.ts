@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Exam } from 'src/app/shared/model/exam';
 import { Patient } from 'src/app/shared/model/patient';
+import { NotificationService } from 'src/app/shared/service/notification.service';
 import { PatientService } from '../../patient/patient.service';
 import { ExamService } from '../exam.service';
 
@@ -14,17 +16,27 @@ export class AddEditExamComponent {
   patients: Patient[];
   exam = {} as Exam;
 
+  examId: any;
+
   formExam: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private patientService: PatientService,
-    private examService: ExamService
+    private examService: ExamService,
+    private activatedRoute: ActivatedRoute,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
     this.getAllPatient();
     this.createForm(this.exam);
+
+    this.examId = this.activatedRoute.snapshot.paramMap.get('id');
+
+    if (this.examId != null) {
+      this.getExamById(this.examId);
+    }
   }
 
   getAllPatient(): void {
@@ -53,10 +65,31 @@ export class AddEditExamComponent {
   }
 
   onSubmit() {
-    this.saveExam(this.formExam.value);
+    if (this.examId != null) {
+      return this.updateExam(this.formExam.value);
+    }
+    return this.saveExam(this.formExam.value);
   }
 
   saveExam(exam: Exam) {
     this.examService.saveExam(exam).subscribe(() => this.clearForm());
+  }
+
+  updateExam(exam: Exam) {
+    this.examService.updateExam(exam).subscribe(() => {
+      this.notificationService.openSnackBar('Exame Alterado');
+    });
+  }
+
+  getExamById(id: number) {
+    this.examService
+      .getExamById(id)
+      .subscribe((res) => this.formExam.patchValue(res));
+  }
+
+  deleteExam(id: Number) {
+    this.examService
+      .deleteExam(id)
+      .subscribe(() => this.notificationService.openSnackBar('Exame Excluido'));
   }
 }
