@@ -1,14 +1,25 @@
+<div fxLayout="row">
+    <mat-form-field class="search" appearance="fill">
+        <mat-label>Pesquisar</mat-label>
+        <input matInput placeholder="Pesquisar" [(ngModel)]="inputSearch">
+    </mat-form-field>
+    <button mat-stroked-button color="primary" (click)="search(inputSearch)">Buscar</button>
+</div>
+
 <div fxLayout="row wrap" fxLayoutAlign="space-between left">
+
     <mat-card class="card-patient" *ngFor="let patient of patients">
+
         <mat-card-content>
             <img src="../../../../assets/patient.png" width="98px" height="98px">
-            <mat-card-title>{{ patient.nome }}</mat-card-title>
-            <mat-card-subtitle>{{ "idade" }}</mat-card-subtitle>
-            <mat-card-title>{{ patient.telefone }}</mat-card-title>
+            <mat-card-title class="space">{{ patient.nome }}</mat-card-title>
+            <mat-card-subtitle class="space">{{ getAge(patient.dtaNascimento) }} anos</mat-card-subtitle>
+            <mat-card-title class="space">{{ patient.telefone }}</mat-card-title>
 
-            <mat-card-title>{{ patient.convenio }}</mat-card-title>
+            <mat-card-title class="convenio space">{{ patient.convenio? patient.convenio : "Sem Plano"
+                }}</mat-card-title>
 
-            <mat-card-footer><a [routerLink]="['patient/edit',patient.id]">Ver Mais</a></mat-card-footer>
+            <mat-card-footer class="space"><a [routerLink]="['patient/edit',patient.id]">Ver Mais</a></mat-card-footer>
         </mat-card-content>
     </mat-card>
 

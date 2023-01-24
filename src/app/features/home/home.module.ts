@@ -5,9 +5,9 @@ import { HomeRoutingModule } from './home-routing.module';
 import { MainComponent } from './main/main.component';
 import { CardPatientComponent } from './card-patient/card-patient.component';
 import { CardStatisticComponent } from './card-statistic/card-statistic.component';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [MainComponent, CardPatientComponent, CardStatisticComponent],
-  imports: [CommonModule, HomeRoutingModule, CustomMaterialModule],
+  imports: [CommonModule, HomeRoutingModule, CustomMaterialModule, FormsModule],
 })
 export class HomeModule {}
