@@ -32,9 +32,9 @@ export class PatientService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  getPatientById(id: Number): Observable<Patient[]> {
+  getPatientById(id: number): Observable<Patient> {
     return this.httpClient
-      .get<Patient[]>(`${this.url}/${id}`)
+      .get<Patient>(`${this.url}/${id}`)
       .pipe(retry(2), catchError(this.handleError));
   }
 

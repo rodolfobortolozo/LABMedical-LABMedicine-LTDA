@@ -1,0 +1,71 @@
+<div class="container fadein" fxLayoutAlign="center none">
+    <div fxFlex="95%">
+        <mat-card-title>
+            <h2>{{ patient.nome }}</h2>
+        </mat-card-title>
+        <mat-card-subtitle>
+            <h3>Convênio: {{ patient.convenio }}</h3>
+        </mat-card-subtitle>
+        <h2 class="text-title">Exames</h2>
+        <mat-card *ngFor="let exam of exams" class="margin-b-20p" fxLayout="row">
+            <div fxFlex="95%">
+                <mat-card-content>
+                    <mat-card-title>
+                        <span class="text-subtitle">Exame:</span> {{ exam.exame }}
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        {{ getDate(exam.dtaExame) | date : 'dd/MM/yyyy' }}
+                    </mat-card-subtitle>
+                    <mat-card-header>
+                        <span class="text-subtitle">Tipo do Exame:</span> {{ exam.tipo }}
+                    </mat-card-header>
+                    <mat-card-header>
+                        <span class="text-subtitle">Laboratório:</span> {{ exam.tipo }}
+                    </mat-card-header>
+                    <mat-card-title>Resultado</mat-card-title>
+                    <mat-card-header>
+                        {{ exam.resultado }}
+                    </mat-card-header>
+                </mat-card-content>
+            </div>
+            <div>
+                <div>
+                    <a [routerLink]="['/exam/edit', exam.id ]">
+                        <img src="../../../../assets/edit.png" width="60" height="25">
+                    </a>
+                </div>
+                <div>
+                    <img src="../../../../assets/attachment.png" width="10" height="30">
+                </div>
+            </div>
+        </mat-card>
+        <h2 class="text-title">Consultas</h2>
+        <mat-card *ngFor="let consult of consults" class="margin-b-20p" fxLayout="row">
+            <div fxFlex="95%">
+                <mat-card-content>
+                    <mat-card-title>
+                        <span class="text-subtitle">Motivo da Consulta:</span> {{ consult.motivo }}
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        {{ getDate(consult.dtaConsulta) | date : 'dd/MM/yyyy' }}
+                    </mat-card-subtitle>
+                    <mat-card-header>
+                        <span class="text-subtitle">Medicação:</span> {{ consult.medicacao }}
+                    </mat-card-header>
+                    <mat-card-header>
+                        <span class="text-subtitle">Dosagem:</span> {{ consult.dosagem }}
+                    </mat-card-header>
+                    <mat-card-title>Descrição do Médico</mat-card-title>
+                    <mat-card-header>
+                        {{ consult.descricao }}
+                    </mat-card-header>
+                </mat-card-content>
+            </div>
+            <div>
+                <a [routerLink]="['/consult/edit', consult.id ]">
+                    <img src="../../../../assets/edit.png" width="60" height="30">
+                </a>
+            </div>
+        </mat-card>
+    </div>
+</div>

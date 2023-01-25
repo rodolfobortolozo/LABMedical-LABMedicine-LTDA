@@ -1,1 +1,39 @@
-<p>list-medical-record works!</p>
+<div class="container fadein" fxLayoutAlign="center none">
+    <div fxFlex="95%">
+        <mat-card-title>
+            <h2>Utilize a barra de pesquisa para buscar</h2>
+        </mat-card-title>
+        <mat-form-field class="full-width">
+            <mat-label>Pesquisar</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Nome, Convênio" #input>
+        </mat-form-field>
+
+        <table mat-table [dataSource]="patients" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Registro </th>
+                <td mat-cell *matCellDef="let element"> {{element.id | lpad}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="nome">
+                <th mat-header-cell *matHeaderCellDef> Nome </th>
+                <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="convenio">
+                <th mat-header-cell *matHeaderCellDef> Convênio </th>
+                <td mat-cell *matCellDef="let element"> {{ element.convenio }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acessar">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let element"> <a [routerLink]="['/patient/medical-record',element.id]">--></a>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+    </div>
+</div>

@@ -32,9 +32,15 @@ export class ExamService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  getExamById(id: Number): Observable<Exam[]> {
+  getExamById(id: Number): Observable<Exam> {
     return this.httpClient
-      .get<Exam[]>(`${this.url}/${id}`)
+      .get<Exam>(`${this.url}/${id}`)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  getExamByPatientId(id: Number): Observable<Exam[]> {
+    return this.httpClient
+      .get<Exam[]>(`${this.url}/?idPatient=${id}`)
       .pipe(retry(2), catchError(this.handleError));
   }
 

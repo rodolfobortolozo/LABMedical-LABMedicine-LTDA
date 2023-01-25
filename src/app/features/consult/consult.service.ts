@@ -38,6 +38,11 @@ export class ConsultService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  getExamByPatientId(id: Number): Observable<Consult[]> {
+    return this.httpClient
+      .get<Consult[]>(`${this.url}/?idPatient=${id}`)
+      .pipe(retry(2), catchError(this.handleError));
+  }
   updateConsult(consult: Consult): Observable<Consult[]> {
     return this.httpClient
       .put<Consult[]>(
