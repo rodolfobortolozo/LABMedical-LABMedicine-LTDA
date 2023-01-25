@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cep } from 'src/app/shared/model/cep';
-import { CepService } from 'src/app/core/services/cep.service';
+import { CepService } from 'src/app/features/patient/cep.service';
 import { PatientService } from 'src/app/features/patient/patient.service';
 import { Patient } from '../../../shared/model/patient';
 import { ActivatedRoute } from '@angular/router';
