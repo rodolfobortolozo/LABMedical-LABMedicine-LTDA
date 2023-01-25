@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Consult } from 'src/app/shared/model/consult';
 import { Patient } from 'src/app/shared/model/patient';
@@ -48,13 +48,34 @@ export class AddEditConsultComponent {
   createForm(consult: Consult) {
     this.formConsult = this.formBuilder.group({
       id: consult.id,
-      idPatient: consult.idPatient,
-      motivo: consult.motivo,
-      dtaConsulta: consult.dtaConsulta,
-      horaConsulta: consult.horaConsulta,
-      descricao: consult.medicacao,
-      medicacao: consult.medicacao,
-      dosagem: consult.dosagem,
+      idPatient: [consult.idPatient, [Validators.required]],
+      motivo: [
+        consult.motivo,
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(64),
+        ],
+      ],
+      dtaConsulta: [consult.dtaConsulta, [Validators.required]],
+      horaConsulta: [consult.horaConsulta, [Validators.required]],
+      descricao: [
+        consult.descricao,
+        [
+          Validators.required,
+          Validators.minLength(16),
+          Validators.maxLength(1024),
+        ],
+      ],
+      medicacao: [consult.medicacao],
+      dosagem: [
+        consult.dosagem,
+        [
+          Validators.required,
+          Validators.minLength(16),
+          Validators.maxLength(256),
+        ],
+      ],
     });
   }
 
@@ -71,7 +92,11 @@ export class AddEditConsultComponent {
   }
 
   saveConsult(consult: Consult) {
-    this.consultService.saveConsult(consult).subscribe(() => this.clearForm());
+    if (this.formConsult.valid) {
+      this.consultService
+        .saveConsult(consult)
+        .subscribe(() => this.clearForm());
+    }
   }
 
   updateConsult(consult: Consult) {

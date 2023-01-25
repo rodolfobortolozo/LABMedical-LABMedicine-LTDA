@@ -11,6 +11,7 @@
                                 {{patient.nome}}
                             </mat-option>
                         </mat-select>
+                        <mat-error>Paciente é <strong>Obrigatório</strong></mat-error>
                     </mat-form-field>
 
                 </mat-card-content>
@@ -24,6 +25,9 @@
                         <mat-form-field class="margin-r-20" appearance="fill" fxFlex="70%">
                             <mat-label>Nome do exame</mat-label>
                             <input matInput placeholder="Nome do exame" formControlName="exame">
+                            <mat-error>Nome do Exame é <strong>Obrigatório</strong> com no minimo 8 Caracteres e no
+                                máximo
+                                64</mat-error>
                         </mat-form-field>
 
                         <mat-form-field class="margin-r-20" appearance="fill" fxFlex="30%">
@@ -32,6 +36,7 @@
                             <mat-hint>DD/MM/YYYY</mat-hint>
                             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
+                            <mat-error>Data é Campo <strong>Obrigatório</strong></mat-error>
                         </mat-form-field>
                         <ngx-timepicker-field [format]="24" [defaultTime]="'08:00'"
                             formControlName="horaExame"></ngx-timepicker-field>
@@ -40,10 +45,15 @@
                         <mat-form-field class="margin-r-20" appearance="fill" fxFlex="100%">
                             <mat-label>Tipo do exame</mat-label>
                             <input matInput placeholder="Tipo do exame" formControlName="tipo">
+                            <mat-error>Tipo do Exame é Campo <strong>Obrigatório</strong> com no minimo 4 Caracteres e
+                                no máximo 32</mat-error>
                         </mat-form-field>
+
                         <mat-form-field class="margin-r-20" appearance="fill" fxFlex="50%">
                             <mat-label>Laboratório</mat-label>
                             <input matInput placeholder="Laboratório" formControlName="laboratorio">
+                            <mat-error>Tipo do Exame é Campo <strong>Obrigatório</strong> com no minimo 4 Caracteres e
+                                no máximo 32</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="row">
@@ -57,6 +67,8 @@
                             <mat-label>Resultado do Exame</mat-label>
                             <textarea matInput placeholder="Resultado do Exame" formControlName="resultado"
                                 rows="5"></textarea>
+                            <mat-error>Tipo do Exame é Campo <strong>Obrigatório</strong> com no minimo 16 Caracteres e
+                                no máximo 1024</mat-error>
                         </mat-form-field>
                     </div>
                     <div>

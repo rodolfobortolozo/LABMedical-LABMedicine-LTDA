@@ -11,18 +11,34 @@
                     <mat-form-field appearance="fill">
                         <mat-label>Nome Completo</mat-label>
                         <input matInput placeholder="Nome Completo" formControlName="nome">
-                    </mat-form-field>
 
+                        <mat-error id="requiredNomeError">
+                            Nome é
+                            <strong>Obrigatório</strong>
+                        </mat-error>
+
+                    </mat-form-field>
 
                     <mat-form-field appearance="fill">
                         <mat-label>E-Mail</mat-label>
                         <input matInput placeholder="E-Mail" formControlName="email">
+
+                        <mat-error id="invalidEmailError">
+                            Digite um Email <strong>Válido</strong>
+                        </mat-error>
+
                     </mat-form-field>
 
                     <mat-form-field appearance="fill">
                         <mat-label>Senha</mat-label>
-                        <input matInput placeholder="Senha" formControlName="senha">
+                        <input matInput type="password" placeholder="Senha" formControlName="senha">
+
+                        <mat-error id="invalidsenhaError">
+                            Senha tem que ter o comprimento minimo de 8 digitos
+                        </mat-error>
+
                     </mat-form-field>
+
                     <div fxLayoutAlign="center center">
                         <button mat-raised-button color="primary" type="submit">Cadastrar</button>
                         <button mat-raised-button color="accent" mat-dialog-close>Sair</button>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Exam } from 'src/app/shared/model/exam';
 import { Patient } from 'src/app/shared/model/patient';
@@ -47,15 +47,36 @@ export class AddEditExamComponent {
 
   createForm(exam: Exam) {
     this.formExam = this.formBuilder.group({
-      id: exam.id,
-      idPatient: exam.idPatient,
-      exame: exam.exame,
-      dtaExame: exam.dtaExame,
+      id: [exam.id],
+      idPatient: [exam.idPatient, [Validators.required]],
+      exame: [
+        exam.exame,
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(64),
+        ],
+      ],
+      dtaExame: [exam.dtaExame, [Validators.required]],
       horaExame: exam.horaExame,
-      tipo: exam.tipo,
-      laboratorio: exam.laboratorio,
-      url: exam.url,
-      resultado: exam.resultado,
+      tipo: [exam.tipo, [Validators.minLength(4), Validators.maxLength(32)]],
+      laboratorio: [
+        exam.laboratorio,
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(32),
+        ],
+      ],
+      url: [exam.url],
+      resultado: [
+        exam.resultado,
+        [
+          Validators.required,
+          Validators.minLength(16),
+          Validators.maxLength(1024),
+        ],
+      ],
     });
   }
 

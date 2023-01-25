@@ -11,6 +11,8 @@
                     <mat-form-field class="edit" appearance="fill">
                         <mat-label>Nome Completo</mat-label>
                         <input matInput placeholder="Nome Completo" formControlName="nome">
+                        <mat-error>Nome é Campo <strong>Obrigatório</strong> com no minimo 8 Caracteres e no máximo
+                            64</mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="select" appearance="fill">
@@ -20,6 +22,7 @@
                                 {{genero.descricao}}
                             </mat-option>
                         </mat-select>
+                        <mat-error>Gênero é <strong>Obrigatório</strong></mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="select" appearance="fill">
@@ -28,16 +31,19 @@
                         <mat-hint>DD/MM/YYYY</mat-hint>
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
+                        <mat-error>Data de Nascimento é <strong>Obrigatório</strong></mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="edit" appearance="fill">
                         <mat-label>Cpf</mat-label>
-                        <input matInput placeholder="Cpf" formControlName="nroCpf">
+                        <input matInput placeholder="Cpf" formControlName="nroCpf" mask="000.000.000-00">
+                        <mat-error>Cpf é <strong>Obrigatório</strong></mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="edit" appearance="fill">
                         <mat-label>Rg</mat-label>
                         <input matInput placeholder="Rg" formControlName="nroRg">
+                        <mat-error>Rg é <strong>Obrigatório</strong> com no máximo 20 caracteres</mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="select" appearance="fill">
@@ -47,21 +53,27 @@
                                 {{estcivil.descricao}}
                             </mat-option>
                         </mat-select>
+                        <mat-error>Estado Civil é <strong>Obrigatório</strong></mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="edit" appearance="fill">
                         <mat-label>Telefone</mat-label>
-                        <input matInput placeholder="Telefone" formControlName="telefone">
+                        <input matInput placeholder="Telefone" formControlName="telefone"
+                            mask="(00) 0 0000-0000 || (00) 0000-0000 ">
                     </mat-form-field>
 
                     <mat-form-field class="edit" appearance="fill">
                         <mat-label>E-Mail</mat-label>
                         <input matInput placeholder="E-Mail" formControlName="email" type="email">
+                        <mat-error>E-Mail está <strong>incorreto</strong></mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="edit" appearance="fill">
                         <mat-label>Naturalidade</mat-label>
                         <input matInput placeholder="Naturalidade" formControlName="naturalidade">
+                        <mat-error>Naturalidade é Campo <strong>Obrigatório</strong> com no minimo 8 Caracteres e no
+                            máximo
+                            64</mat-error>
                     </mat-form-field>
 
                     <div>
@@ -82,7 +94,7 @@
                         <mat-label>Validade</mat-label>
                         <input matInput [matDatepicker]="picker2" formControlName="dtaValidade">
                         <mat-hint>DD/MM/YYYY</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
                         <mat-datepicker #picker2></mat-datepicker>
                     </mat-form-field>
                     <div>
@@ -92,6 +104,7 @@
                     <mat-form-field class="edit" appearance="fill">
                         <mat-label>Cep</mat-label>
                         <input matInput placeholder="Cep" formControlName="cep" [(ngModel)]="inputCep">
+                        <mat-error>Cep é Campo <strong>Obrigatório</strong></mat-error>
                     </mat-form-field>
 
                     <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
@@ -102,31 +115,37 @@
                     <mat-form-field class="edit" appearance="fill">
                         <mat-label>Cidade</mat-label>
                         <input matInput placeholder="Cidade" formControlName="cidade">
+                        <mat-error>Cidade é Campo <strong>Obrigatório</strong></mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="edit" appearance="fill">
                         <mat-label>Estado</mat-label>
                         <input matInput placeholder="Estado" formControlName="estado">
+                        <mat-error>Estado é Campo <strong>Obrigatório</strong></mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="edit" appearance="fill">
                         <mat-label>Logradouro</mat-label>
                         <input matInput placeholder="Logradouro" formControlName="logradouro">
+                        <mat-error>Logradouro é Campo <strong>Obrigatório</strong></mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="edit" appearance="fill">
                         <mat-label>Número</mat-label>
                         <input matInput placeholder="Número" formControlName="numero">
+                        <mat-error>Número é Campo <strong>Obrigatório</strong></mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="edit" appearance="fill">
                         <mat-label>Complemento</mat-label>
                         <input matInput placeholder="Complemento" formControlName="complemento">
+                        <mat-error>Complemento é Campo <strong>Obrigatório</strong></mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="edit" appearance="fill">
                         <mat-label>Bairro</mat-label>
                         <input matInput placeholder="Bairro" formControlName="bairro">
+                        <mat-error>Bairro é Campo <strong>Obrigatório</strong></mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="edit" appearance="fill">

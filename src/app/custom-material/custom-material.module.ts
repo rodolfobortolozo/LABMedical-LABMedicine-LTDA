@@ -37,6 +37,7 @@ import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { FlexModule } from '@angular/flex-layout/flex';
 
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker'; //Date Picker
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 // Alterar Data para Portugues
 export const MY_FORMATS = {
@@ -86,6 +87,8 @@ export const MY_FORMATS = {
     FlexModule,
     MatFormFieldModule,
     NgxMaterialTimepickerModule,
+    NgxMaskPipe,
+    NgxMaskDirective,
   ],
   exports: [
     CommonModule,
@@ -121,6 +124,8 @@ export const MY_FORMATS = {
     FlexModule,
     MatFormFieldModule,
     NgxMaterialTimepickerModule,
+    NgxMaskPipe,
+    NgxMaskDirective,
   ],
 
   // Utiliza Data e idioma portugues
@@ -130,6 +135,7 @@ export const MY_FORMATS = {
       useValue: MY_FORMATS,
     },
     { provide: MAT_DATE_LOCALE, useValue: 'pt-br' },
+    provideNgxMask(),
   ],
 })
 export class CustomMaterialModule {

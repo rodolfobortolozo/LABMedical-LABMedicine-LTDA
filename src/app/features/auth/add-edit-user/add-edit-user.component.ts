@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/shared/model/user';
 import { NotificationService } from 'src/app/shared/service/notification.service';
 import { AuthService } from '../auth.service';
@@ -22,10 +22,10 @@ export class AddEditUserComponent {
 
   createform(user: User) {
     this.formUser = this.formBuilder.group({
-      id: user.id,
-      nome: user.nome,
-      email: user.email,
-      senha: user.senha,
+      id: [user.id],
+      nome: [user.nome, [Validators.required]],
+      email: [user.email, [Validators.required, Validators.email]],
+      senha: [user.senha, [Validators.required, Validators.minLength(8)]],
     });
   }
 
@@ -46,6 +46,8 @@ export class AddEditUserComponent {
   }
 
   onSubmit() {
-    this.saveUser(this.formUser.value);
+    if (this.formUser.valid) {
+      return this.saveUser(this.formUser.value);
+    }
   }
 }

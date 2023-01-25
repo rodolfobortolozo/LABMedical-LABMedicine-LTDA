@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/app/shared/model/user';
 import { NotificationService } from 'src/app/shared/service/notification.service';
@@ -24,8 +24,8 @@ export class LoginComponent {
 
   createForm(user: User) {
     this.formLogin = this.formBuilder.group({
-      email: user.email,
-      password: user.senha,
+      email: [user.email, [Validators.required, Validators.email]],
+      password: [user.senha, [Validators.required]],
       rememberMe: '',
     });
 
@@ -36,19 +36,23 @@ export class LoginComponent {
     const email = this.formLogin.get('email')?.value;
     const passowrd = this.formLogin.get('password')?.value;
 
-    this.authService.login(email, passowrd).subscribe((ret) => {
-      if (ret[0]?.sucesso === true) {
-        this.notificationService.openSnackBar(`Seja Bem-Vindo ${ret[0].nome}`);
+    if (this.formLogin.valid) {
+      this.authService.login(email, passowrd).subscribe((ret) => {
+        if (ret[0]?.sucesso === true) {
+          this.notificationService.openSnackBar(
+            `Seja Bem-Vindo ${ret[0].nome}`
+          );
 
-        if (this.formLogin.get('rememberMe')) {
-          localStorage.setItem('savedUserEmail', email);
+          if (this.formLogin.get('rememberMe')) {
+            localStorage.setItem('savedUserEmail', email);
+          } else {
+            localStorage.removeItem('savedUserEmail');
+          }
         } else {
-          localStorage.removeItem('savedUserEmail');
+          this.notificationService.openSnackBar('Usuário ou Senha Inválidos');
         }
-      } else {
-        this.notificationService.openSnackBar('Usuário ou Senha Inválidos');
-      }
-    });
+      });
+    }
   }
 
   openAddUser() {

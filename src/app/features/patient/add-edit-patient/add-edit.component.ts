@@ -16,6 +16,7 @@ export class AddEditComponent {
   patient = {} as Patient;
   retCep = {} as Cep;
   inputCep: string = '';
+  mask: string;
 
   patientId: any;
 
@@ -45,18 +46,26 @@ export class AddEditComponent {
       id: patient.id,
       nome: [
         patient.nome,
-        [Validators.required, Validators.min(8), Validators.max(64)],
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(64),
+        ],
       ],
       genero: [patient.genero, [Validators.required]],
       dtaNascimento: [patient.dtaNascimento, [Validators.required]],
       nroCpf: [patient.nroCpf, [Validators.required]],
-      nroRg: [patient.nroRg, [Validators.required, Validators.max(20)]],
+      nroRg: [patient.nroRg, [Validators.required, Validators.maxLength(20)]],
       estadoCivil: [patient.estadoCivil, [Validators.required]],
       telefone: [patient.telefone, [Validators.required]],
-      email: patient.telefone,
+      email: [patient.email, [Validators.email]],
       naturalidade: [
         patient.naturalidade,
-        [Validators.required, Validators.min(8), Validators.max(64)],
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(64),
+        ],
       ],
       convenio: patient.convenio,
       nroCarteira: patient.nroCarteira,
@@ -82,19 +91,24 @@ export class AddEditComponent {
   }
 
   clearForm() {
+    //this.patient = {} as Patient;
     this.formPatient.reset();
-    this.patient = {} as Patient;
   }
 
   onSubmit() {
-    if (this.patientId != null) {
-      return this.updatePatient(this.formPatient.value);
+    if (this.formPatient.valid) {
+      if (this.patientId != null) {
+        return this.updatePatient(this.formPatient.value);
+      }
+      return this.savePatient(this.formPatient.value);
     }
-    return this.savePatient(this.formPatient.value);
   }
 
   savePatient(patient: Patient) {
-    this.patientService.savePatient(patient).subscribe(() => this.clearForm());
+    this.patientService.savePatient(patient).subscribe(() => {
+      this.clearForm();
+      this.notificationService.openSnackBar('Paciente Cadastrado');
+    });
   }
 
   updatePatient(patient: Patient) {
@@ -116,6 +130,17 @@ export class AddEditComponent {
         this.notificationService.openSnackBar('Paciente Excluido')
       );
   }
+
+  cpfcnpjmask() {
+    const value = this.formPatient.get('cpf')?.value;
+    console.log(value, value.length, this.formPatient);
+    if (value.length <= 14) {
+      this.mask = '00.000.000/0000-00';
+    } else {
+      this.mask = '00.000.0000-00';
+    }
+  }
+
   //Constantes
   GENEROS = [
     { genero: 'M', descricao: 'Masculino' },
