@@ -35,6 +35,7 @@ export class LoginComponent {
   onSubmit() {
     const email = this.formLogin.get('email')?.value;
     const passowrd = this.formLogin.get('password')?.value;
+    const rememberMe = this.formLogin.get('rememberMe')?.value;
 
     if (this.formLogin.valid) {
       this.authService.login(email, passowrd).subscribe((ret) => {
@@ -43,7 +44,7 @@ export class LoginComponent {
             `Seja Bem-Vindo ${ret[0].nome}`
           );
 
-          if (this.formLogin.get('rememberMe')) {
+          if (rememberMe) {
             localStorage.setItem('savedUserEmail', email);
           } else {
             localStorage.removeItem('savedUserEmail');
