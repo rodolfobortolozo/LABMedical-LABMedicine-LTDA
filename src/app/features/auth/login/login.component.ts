@@ -33,7 +33,7 @@ export class LoginComponent {
     const email = this.formLogin.get('email')?.value;
     const passowrd = this.formLogin.get('password')?.value;
     this.authService.login(email, passowrd).subscribe((ret) => {
-      if ((ret[0].sucesso = true)) {
+      if (ret[0].sucesso === true) {
         this.notificationService.openSnackBar(`Seja Bem-Vindo ${ret[0].nome}`);
       } else {
         this.notificationService.openSnackBar('Usuário ou Senha Inválidos');
