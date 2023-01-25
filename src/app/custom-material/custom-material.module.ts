@@ -1,4 +1,4 @@
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
@@ -36,13 +36,14 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { FlexModule } from '@angular/flex-layout/flex';
 
-export const MY_DATE_FORMATS = {
+// Alterar Data para Portugues
+export const MY_FORMATS = {
   parse: {
-    dateInput: 'DD MM YYYY',
+    dateInput: 'MMM DD YYYY',
   },
   display: {
-    dateInput: 'DD MM YYYY',
-    monthYearLabel: 'MMMM YYYY',
+    dateInput: 'DD MMM YYYY',
+    monthYearLabel: 'MMM YYYY',
     dateA11yLabel: 'LL',
     monthYearA11yLabel: 'MMMM YYYY',
   },
@@ -120,8 +121,11 @@ export const MY_DATE_FORMATS = {
 
   // Utiliza Data e idioma portugues
   providers: [
-    { provide: LOCALE_ID, useValue: 'pt-BR' },
-    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
+    {
+      provide: MAT_DATE_FORMATS,
+      useValue: MY_FORMATS,
+    },
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-br' },
   ],
 })
 export class CustomMaterialModule {
