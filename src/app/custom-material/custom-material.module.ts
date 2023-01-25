@@ -32,18 +32,17 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { FlexModule } from '@angular/flex-layout/flex';
 
-// Alterar Data para Portugues
-export const MY_FORMATS = {
+export const MY_DATE_FORMATS = {
   parse: {
-    dateInput: 'DD MMM YYYY',
+    dateInput: 'DD MM YYYY',
   },
   display: {
-    dateInput: 'DD MMM YYYY',
-    monthYearLabel: 'MMM YYYY',
+    dateInput: 'DD MM YYYY',
+    monthYearLabel: 'MMMM YYYY',
     dateA11yLabel: 'LL',
     monthYearA11yLabel: 'MMMM YYYY',
   },
@@ -121,11 +120,8 @@ export const MY_FORMATS = {
 
   // Utiliza Data e idioma portugues
   providers: [
-    {
-      provide: MAT_DATE_FORMATS,
-      useValue: MY_FORMATS,
-    },
-    { provide: LOCALE_ID, useValue: 'pt-br' },
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
   ],
 })
 export class CustomMaterialModule {
