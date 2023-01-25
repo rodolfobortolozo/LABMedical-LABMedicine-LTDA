@@ -30,6 +30,8 @@
                             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
                         </mat-form-field>
+                        <ngx-timepicker-field [format]="24" [defaultTime]="'08:00'"
+                            formControlName="horaExame"></ngx-timepicker-field>
                     </div>
                     <div fxLayout="row">
                         <mat-form-field class="margin-r-20" appearance="fill" fxFlex="100%">

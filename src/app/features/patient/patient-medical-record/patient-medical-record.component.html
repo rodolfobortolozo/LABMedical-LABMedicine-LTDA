@@ -14,7 +14,7 @@
                         <span class="text-subtitle">Exame:</span> {{ exam.exame }}
                     </mat-card-title>
                     <mat-card-subtitle>
-                        {{ getDate(exam.dtaExame) | date : 'dd/MM/yyyy' }}
+                        {{ getDate(exam.dtaExame) | date : 'dd/MM/yyyy' }} {{ exam.horaExame }}
                     </mat-card-subtitle>
                     <mat-card-header>
                         <span class="text-subtitle">Tipo do Exame:</span> {{ exam.tipo }}
@@ -47,7 +47,7 @@
                         <span class="text-subtitle">Motivo da Consulta:</span> {{ consult.motivo }}
                     </mat-card-title>
                     <mat-card-subtitle>
-                        {{ getDate(consult.dtaConsulta) | date : 'dd/MM/yyyy' }}
+                        {{ getDate(consult.dtaConsulta) | date : 'dd/MM/yyyy' }} {{ consult.horaConsulta }}
                     </mat-card-subtitle>
                     <mat-card-header>
                         <span class="text-subtitle">Medicação:</span> {{ consult.medicacao }}

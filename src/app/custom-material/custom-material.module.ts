@@ -36,6 +36,8 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { FlexModule } from '@angular/flex-layout/flex';
 
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker'; //Date Picker
+
 // Alterar Data para Portugues
 export const MY_FORMATS = {
   parse: {
@@ -83,6 +85,7 @@ export const MY_FORMATS = {
     MatNativeDateModule,
     FlexModule,
     MatFormFieldModule,
+    NgxMaterialTimepickerModule,
   ],
   exports: [
     CommonModule,
@@ -117,6 +120,7 @@ export const MY_FORMATS = {
     MatNativeDateModule,
     FlexModule,
     MatFormFieldModule,
+    NgxMaterialTimepickerModule,
   ],
 
   // Utiliza Data e idioma portugues
