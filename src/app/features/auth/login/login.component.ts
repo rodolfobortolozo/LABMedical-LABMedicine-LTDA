@@ -26,15 +26,25 @@ export class LoginComponent {
     this.formLogin = this.formBuilder.group({
       email: user.email,
       password: user.senha,
+      rememberMe: '',
     });
+
+    this.rememberMe();
   }
 
   onSubmit() {
     const email = this.formLogin.get('email')?.value;
     const passowrd = this.formLogin.get('password')?.value;
+
     this.authService.login(email, passowrd).subscribe((ret) => {
-      if (ret[0].sucesso === true) {
+      if (ret[0]?.sucesso === true) {
         this.notificationService.openSnackBar(`Seja Bem-Vindo ${ret[0].nome}`);
+
+        if (this.formLogin.get('rememberMe')) {
+          localStorage.setItem('savedUserEmail', email);
+        } else {
+          localStorage.removeItem('savedUserEmail');
+        }
       } else {
         this.notificationService.openSnackBar('Usuário ou Senha Inválidos');
       }
@@ -43,6 +53,15 @@ export class LoginComponent {
 
   openAddUser() {
     this.dialog.open(AddEditUserComponent);
+  }
+
+  rememberMe(): void {
+    const email = localStorage.getItem('savedUserEmail');
+
+    if (email) {
+      this.formLogin.get('email')?.setValue(email);
+      this.formLogin.get('rememberMe')?.setValue(true);
+    }
   }
 
   ngOnInit() {
