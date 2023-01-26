@@ -130,15 +130,16 @@
         <!-- Main content -->
         <mat-sidenav-content class="sidenav-content">
 
-            <!-- <div class="progress-bar-container">
-                <mat-progress-bar color="accent" mode="indeterminate" *ngIf="spinnerService.visibility | async">
-                </mat-progress-bar>
-           
-            </div> -->
+            <div class="progress-bar-container">
+                <mat-spinner color="accent" mode="indeterminate" *ngIf="this.loadingService.visibility | async">
+                </mat-spinner>
+            </div>
 
             <div>
                 <router-outlet></router-outlet>
             </div>
+
+
 
         </mat-sidenav-content>
     </mat-sidenav-container>

@@ -8,9 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { CustomMaterialModule } from './custom-material/custom-material.module';
+import { HttpRequestInterceptor } from './core/interceptors/http-request.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,13 @@ import { CustomMaterialModule } from './custom-material/custom-material.module';
     RouterModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpRequestInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
