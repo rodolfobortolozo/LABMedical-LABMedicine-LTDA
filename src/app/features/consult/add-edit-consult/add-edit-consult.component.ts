@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 import { Consult } from 'src/app/shared/model/consult';
 import { Patient } from 'src/app/shared/model/patient';
 import { NotificationService } from 'src/app/shared/service/notification.service';
@@ -57,8 +58,8 @@ export class AddEditConsultComponent {
           Validators.maxLength(64),
         ],
       ],
-      dtaConsulta: [consult.dtaConsulta, [Validators.required]],
-      horaConsulta: [consult.horaConsulta, [Validators.required]],
+      dtaConsulta: [moment(), [Validators.required]],
+      horaConsulta: [moment().format('hh:mm'), [Validators.required]],
       descricao: [
         consult.descricao,
         [

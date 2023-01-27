@@ -32,20 +32,26 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+import {
+  DateAdapter,
+  MatNativeDateModule,
+  MAT_DATE_LOCALE,
+} from '@angular/material/core';
 import { FlexModule } from '@angular/flex-layout/flex';
 
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker'; //Date Picker
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+
 // Alterar Data para Portugues
 export const MY_FORMATS = {
   parse: {
-    dateInput: 'MMM DD YYYY',
+    dateInput: 'DD/MM/YYYY',
   },
   display: {
-    dateInput: 'DD MMM YYYY',
+    dateInput: 'DD/MM/YYYY',
     monthYearLabel: 'MMM YYYY',
     dateA11yLabel: 'LL',
     monthYearA11yLabel: 'MMMM YYYY',
@@ -130,6 +136,11 @@ export const MY_FORMATS = {
 
   // Utiliza Data e idioma portugues
   providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE],
+    },
     {
       provide: MAT_DATE_FORMATS,
       useValue: MY_FORMATS,

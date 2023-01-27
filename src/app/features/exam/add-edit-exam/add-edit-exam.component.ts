@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 import { Exam } from 'src/app/shared/model/exam';
 import { Patient } from 'src/app/shared/model/patient';
 import { NotificationService } from 'src/app/shared/service/notification.service';
@@ -57,8 +58,8 @@ export class AddEditExamComponent {
           Validators.maxLength(64),
         ],
       ],
-      dtaExame: [exam.dtaExame, [Validators.required]],
-      horaExame: exam.horaExame,
+      dtaExame: [moment(), [Validators.required]],
+      horaExame: [moment().format('hh:mm')],
       tipo: [exam.tipo, [Validators.minLength(4), Validators.maxLength(32)]],
       laboratorio: [
         exam.laboratorio,
