@@ -59,7 +59,7 @@ export class AddEditConsultComponent {
         ],
       ],
       dtaConsulta: [moment(), [Validators.required]],
-      horaConsulta: [moment().format('hh:mm'), [Validators.required]],
+      horaConsulta: [moment().format('HH:mm'), [Validators.required]],
       descricao: [
         consult.descricao,
         [

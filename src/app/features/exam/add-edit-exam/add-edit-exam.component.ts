@@ -59,7 +59,7 @@ export class AddEditExamComponent {
         ],
       ],
       dtaExame: [moment(), [Validators.required]],
-      horaExame: [moment().format('hh:mm')],
+      horaExame: [moment().format('HH:mm')],
       tipo: [exam.tipo, [Validators.minLength(4), Validators.maxLength(32)]],
       laboratorio: [
         exam.laboratorio,
