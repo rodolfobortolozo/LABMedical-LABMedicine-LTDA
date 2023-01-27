@@ -1,14 +1,14 @@
 <div fxLayout="row">
     <mat-form-field class="search" appearance="fill">
-        <mat-label>Pesquisar</mat-label>
-        <input matInput placeholder="Pesquisar" [(ngModel)]="inputSearch">
+        <mat-label>Ditie o nome do Paciente ou sua Matricula para Pesquisar</mat-label>
+        <input matInput placeholder="Pesquisar" (keyup)="search($event)">
     </mat-form-field>
-    <button mat-stroked-button color="primary" (click)="search(inputSearch)">Buscar</button>
+    <!-- <button mat-stroked-button color="primary" (click)="search(inputSearch)">Buscar</button> -->
 </div>
 
 <div fxLayout="row wrap" fxLayoutAlign="space-between left">
 
-    <mat-card class="card-patient" *ngFor="let patient of patients">
+    <mat-card class="card-patient" *ngFor="let patient of filteredPatients">
 
         <mat-card-content>
             <img src="../../../../assets/patient.png" width="98px" height="98px">

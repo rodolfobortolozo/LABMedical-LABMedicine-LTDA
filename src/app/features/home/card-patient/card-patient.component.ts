@@ -9,7 +9,7 @@ import { PatientService } from '../../patient/patient.service';
 })
 export class CardPatientComponent {
   patients: Patient[] = [];
-  inputSearch: string = '';
+  filteredPatients: Patient[] = [];
 
   constructor(private patientService: PatientService) {}
 
@@ -18,9 +18,10 @@ export class CardPatientComponent {
   }
 
   getAllPatient(): void {
-    this.patientService
-      .getAllPatient()
-      .subscribe((patient: Patient[]) => (this.patients = patient));
+    this.patientService.getAllPatient().subscribe((patient: Patient[]) => {
+      this.patients = patient;
+      this.filteredPatients = this.patients;
+    });
   }
 
   getAge(dateString: string) {
@@ -36,16 +37,15 @@ export class CardPatientComponent {
     return age;
   }
 
-  search(search: string): void {
-    if (search === '') {
-      this.getAllPatient();
-    }
-    this.patients = this.patients.filter((patient: Patient) => {
-      let pat =
+  search(event: Event): void {
+    let search = (event.target as HTMLInputElement).value;
+
+    this.filteredPatients = this.patients.filter((patient: Patient) => {
+      let pacient =
         patient.nome?.toLowerCase() +
         patient.email?.toLocaleLowerCase() +
         patient.id;
-      return String(pat).includes(search.toLowerCase());
+      return String(pacient).includes(search.toLowerCase());
     });
   }
 }
