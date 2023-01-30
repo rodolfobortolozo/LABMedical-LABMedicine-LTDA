@@ -1,27 +1,76 @@
-# DevInHouseProjeto02
+# LABMedical - LABMedicine LTDA
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
+![GitHub repo size](https://img.shields.io/github/repo-size/rodolfobortolozo/angular-http?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/rodolfobortolozo/angular-http?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/rodolfobortolozo/angular-http?style=for-the-badge)
+![Bitbucket open issues](https://img.shields.io/bitbucket/issues/rodolfobortolozo/angular-http?style=for-the-badge)
+![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/rodolfobortolozo/angular-http?style=for-the-badge)
 
-## Development server
+<img src=".../../src/assets/projeto.png" alt="exemplo imagem">
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+> Tela de Login do Sistema.
 
-## Code scaffolding
+### Descrição do Projeto
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+A LABMedicine LTDA, empresa líder no segmento tecnológico para gestão hospitalar, está com um projeto novo intitulado LABMedical, um software audacioso para gestão de inventário médico. O seu perfil chamou a atenção dos gestores, para criar a aplicação Front-End do software, que deverá ser construída utilizando o framework Angular.
 
-## Build
+## 💻 Pré-requisitos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
-## Running unit tests
+<!---Estes são apenas requisitos de exemplo. Adicionar, duplicar ou remover conforme necessário--->
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Você instalou a versão mais recente de `Angular 15.0.1`
 
-## Running end-to-end tests
+## 🚀 Instalando LABMedical
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Para instalar o LABMedical, siga estas etapas:
 
-## Further help
+Por utilizar o Angular 15.0.1 e o Angular Material 14.0.0 tem que forçar a instalação dos pacotes.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
+npm install --force
+```
+
+## ☕ Usando LABMedical
+
+Dentro da Pasta assets/db tem o arquivo `db.json`, Banco de dados em Json Server
+
+### Configuração Json Server
+
+```
+# Instalação
+npm install -g json-server
+
+# Iniciando o servidor
+Agora é só rodar o comando abaixo e seu servidor estará iniciado. Lembrando que por padrão a API vai funcionar no enderço: http://localhost:3000
+
+json-server --watch db.json
+```
+
+## Exemplo do Arquivo db.json
+
+```
+{
+  "patient": [
+  ],
+  "consult": [
+  ],
+  "exam": [
+  ],
+  "user": [
+    {
+      "id": 1,
+      "nome": "Rodolfo R Bortolozo",
+      "email": "rodolfobortolozo@gmail.com",
+      "senha": "123456"
+    }
+  ]
+}
+```
+
+### Inicialização do Aplicativo
+
+```
+ng serve --o
+```
