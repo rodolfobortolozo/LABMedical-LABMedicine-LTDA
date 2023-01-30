@@ -40,7 +40,9 @@ export class ConsultService {
 
   getExamByPatientId(id: Number): Observable<Consult[]> {
     return this.httpClient
-      .get<Consult[]>(`${this.url}/?idPatient=${id}`)
+      .get<Consult[]>(
+        `${this.url}/?idPatient=${id}&_sort=dtaConsulta&_order=desc`
+      )
       .pipe(retry(2), catchError(this.handleError));
   }
   updateConsult(consult: Consult): Observable<Consult[]> {

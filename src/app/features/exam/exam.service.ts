@@ -40,7 +40,7 @@ export class ExamService {
 
   getExamByPatientId(id: Number): Observable<Exam[]> {
     return this.httpClient
-      .get<Exam[]>(`${this.url}/?idPatient=${id}`)
+      .get<Exam[]>(`${this.url}/?idPatient=${id}&_sort=dtaExame&_order=desc`)
       .pipe(retry(2), catchError(this.handleError));
   }
 
