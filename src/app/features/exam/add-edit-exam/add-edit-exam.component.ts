@@ -87,10 +87,12 @@ export class AddEditExamComponent {
   }
 
   onSubmit() {
-    if (this.examId != null) {
-      return this.updateExam(this.formExam.value);
+    if (this.formExam.valid) {
+      if (this.examId != null) {
+        return this.updateExam(this.formExam.value);
+      }
+      return this.saveExam(this.formExam.value);
     }
-    return this.saveExam(this.formExam.value);
   }
 
   saveExam(exam: Exam) {

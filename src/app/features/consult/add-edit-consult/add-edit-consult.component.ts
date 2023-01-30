@@ -86,10 +86,12 @@ export class AddEditConsultComponent {
   }
 
   onSubmit() {
-    if (this.consultId != null) {
-      return this.updateConsult(this.formConsult.value);
+    if (this.formConsult.valid) {
+      if (this.consultId != null) {
+        return this.updateConsult(this.formConsult.value);
+      }
+      return this.saveConsult(this.formConsult.value);
     }
-    return this.saveConsult(this.formConsult.value);
   }
 
   saveConsult(consult: Consult) {

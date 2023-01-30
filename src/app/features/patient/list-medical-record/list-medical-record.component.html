@@ -27,7 +27,10 @@
 
             <ng-container matColumnDef="acessar">
                 <th mat-header-cell *matHeaderCellDef> </th>
-                <td mat-cell *matCellDef="let element"> <a [routerLink]="['/patient/medical-record',element.id]">--></a>
+                <td mat-cell *matCellDef="let element"> <a [routerLink]="['/patient/medical-record',element.id]">
+                        <img src="../../../../assets/arrow_forward.png">
+
+                    </a>
                 </td>
             </ng-container>
 

@@ -69,10 +69,10 @@
                         </mat-form-field>
                     </div>
                     <div>
-                        <button mat-raised-button color="primary" type="submit">{{
+                        <button mat-raised-button class="margin-r-20" color="primary" type="submit">{{
                             consultId?"Alterar":"Salvar"}}</button>
 
-                        <button mat-raised-button color="warn" [disabled]="!consultId"
+                        <button mat-raised-button class="margin-r-20" color="warn" [disabled]="!consultId"
                             (click)="deleteConsult(consultId)">Deletar</button>
                     </div>
                 </mat-card-content>

@@ -72,10 +72,10 @@
                         </mat-form-field>
                     </div>
                     <div>
-                        <button mat-raised-button color="primary" type="submit">{{
+                        <button mat-raised-button class="margin-r-20" color="primary" type="submit">{{
                             examId?"Alterar":"Salvar"}}</button>
 
-                        <button mat-raised-button color="warn" [disabled]="!examId"
+                        <button mat-raised-button class="margin-r-20" color="warn" [disabled]="!examId"
                             (click)="deleteExam(examId)">Deletar</button>
                     </div>
                 </mat-card-content>

@@ -54,9 +54,9 @@ mat-sidenav {
   position: fixed;
   left: 50%;
   top: 50%;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
+  width: 50%;
+  height: 50%;
+  z-index: 0;
 }
 
 a.mat-list-item.active {
