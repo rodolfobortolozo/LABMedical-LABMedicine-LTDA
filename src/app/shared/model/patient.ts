@@ -12,6 +12,9 @@ export interface Patient {
   convenio: string;
   nroCarteira: string;
   dtaValidade: string;
+  telefoneEmergencia: string;
+  alergia: string;
+  listaCuidado: string;
   cep: string;
   cidade: string;
   estado: string;

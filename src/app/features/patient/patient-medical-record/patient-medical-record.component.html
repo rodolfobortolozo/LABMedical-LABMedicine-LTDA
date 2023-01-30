@@ -6,6 +6,9 @@
         <mat-card-subtitle>
             <h3>Convênio: {{ patient.convenio }}</h3>
         </mat-card-subtitle>
+        <mat-card-subtitle>
+            <h3>Alergias: {{ patient.alergia }}</h3>
+        </mat-card-subtitle>
         <h2 class="text-title">Exames</h2>
         <mat-card *ngFor="let exam of exams" class="margin-b-20p" fxLayout="row">
             <div fxFlex="95%">

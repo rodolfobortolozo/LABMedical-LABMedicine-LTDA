@@ -97,6 +97,24 @@
                         <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
                         <mat-datepicker #picker2></mat-datepicker>
                     </mat-form-field>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Contato de Emergência</mat-label>
+                        <input matInput placeholder="Contato de Emergência" formControlName="telefoneEmergencia"
+                            mask="(00) 0 0000-0000 || (00) 0000-0000 ">
+                        <mat-error>Contato de Emergência é um campo Obrigatório</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Alergias</mat-label>
+                        <input matInput placeholder="Alergias" formControlName="alergia">
+                    </mat-form-field>
+
+                    <mat-form-field class="edit" appearance="fill">
+                        <mat-label>Lista de Cuidados</mat-label>
+                        <input matInput placeholder="Lista de Cuidados" formControlName="listaCuidado">
+                    </mat-form-field>
+
                     <div>
                         <h5>Dados Endereço</h5>
                     </div>
