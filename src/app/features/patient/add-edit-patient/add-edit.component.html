@@ -170,12 +170,17 @@
                         <mat-label>Ponto de Referência</mat-label>
                         <input matInput placeholder="Ponto de Referência" formControlName="pontoReferencia">
                     </mat-form-field>
-                    <div>
-                        <button mat-raised-button color="primary" type="submit">{{
-                            patientId?"Alterar":"Salvar"}}</button>
-
-                        <button mat-raised-button color="warn" [disabled]="!patientId"
-                            (click)="deletePatient(patientId)">Deletar</button>
+                    <div fxLayout="row">
+                        <div>
+                            <button mat-raised-button class="margin-r-20" color="primary" type="submit">{{
+                                patientId?"Alterar":"Salvar"}}</button>
+                        </div>
+                        <div matTooltip="Paciente com Consulta/ Exame Cadastrado"
+                            [matTooltipDisabled]="!(qtdExamConsult>=1)">
+                            <button mat-raised-button class="margin-r-20" color="warn" [disabled]="qtdExamConsult>=1"
+                                [disabled]="!patientId" matBadge="!" [matBadgeHidden]="!(qtdExamConsult>=1)"
+                                (click)="deletePatient(patientId)">Deletar</button>
+                        </div>
                     </div>
                 </form>
             </mat-card-content>

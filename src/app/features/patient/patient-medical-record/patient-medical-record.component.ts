@@ -28,26 +28,26 @@ export class PatientMedicalRecordComponent {
 
   ngOnInit(): void {
     this.patientId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.getPatient();
-    this.getExamByPatient();
-    this.getConsultByPatient();
+    this.getPatient(this.patientId);
+    this.getExamByPatient(this.patientId);
+    this.getConsultByPatient(this.patientId);
   }
 
-  getPatient(): void {
+  getPatient(patientId: number): void {
     this.patientService
-      .getPatientById(this.patientId)
+      .getPatientById(patientId)
       .subscribe((patient: Patient) => (this.patient = patient));
   }
 
-  getExamByPatient(): void {
+  getExamByPatient(patientId: number): void {
     this.examService
-      .getExamByPatientId(this.patientId)
+      .getExamByPatientId(patientId)
       .subscribe((exam: Exam[]) => (this.exams = exam));
   }
 
-  getConsultByPatient(): void {
+  getConsultByPatient(patientId: number): void {
     this.consultService
-      .getExamByPatientId(this.patientId)
+      .getExamByPatientId(patientId)
       .subscribe((consults: Consult[]) => (this.consults = consults));
   }
 

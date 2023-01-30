@@ -6,6 +6,10 @@ import { PatientService } from 'src/app/features/patient/patient.service';
 import { Patient } from '../../../shared/model/patient';
 import { ActivatedRoute } from '@angular/router';
 import { NotificationService } from 'src/app/shared/service/notification.service';
+import { Exam } from 'src/app/shared/model/exam';
+import { Consult } from 'src/app/shared/model/consult';
+import { ExamService } from '../../exam/exam.service';
+import { ConsultService } from '../../consult/consult.service';
 
 @Component({
   selector: 'lab-add-edit',
@@ -17,7 +21,8 @@ export class AddEditComponent {
   retCep = {} as Cep;
   inputCep: string = '';
   mask: string;
-
+  qtdExamConsult: number = 0;
+  hidden = false;
   patientId: any;
 
   formPatient: FormGroup;
@@ -27,6 +32,8 @@ export class AddEditComponent {
     private patientService: PatientService,
     private cepService: CepService,
     private activatedRoute: ActivatedRoute,
+    private examService: ExamService,
+    private consultService: ConsultService,
     private notificationService: NotificationService
   ) {}
 
@@ -90,6 +97,8 @@ export class AddEditComponent {
 
     if (this.patientId != null) {
       this.getPatientById(this.patientId);
+      this.getExamByPatient(this.patientId);
+      this.getConsultByPatient(this.patientId);
     }
   }
 
@@ -134,14 +143,18 @@ export class AddEditComponent {
       );
   }
 
-  cpfcnpjmask() {
-    const value = this.formPatient.get('cpf')?.value;
-    console.log(value, value.length, this.formPatient);
-    if (value.length <= 14) {
-      this.mask = '00.000.000/0000-00';
-    } else {
-      this.mask = '00.000.0000-00';
-    }
+  getExamByPatient(patientId: Number): void {
+    this.examService
+      .getExamByPatientId(patientId)
+      .subscribe((exam: Exam[]) => (this.qtdExamConsult += exam.length));
+  }
+
+  getConsultByPatient(patientId: Number): void {
+    this.consultService
+      .getExamByPatientId(patientId)
+      .subscribe(
+        (consults: Consult[]) => (this.qtdExamConsult += consults.length)
+      );
   }
 
   //Constantes
