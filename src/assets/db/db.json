@@ -1,0 +1,13 @@
+{
+  "patient": [],
+  "consult": [],
+  "exam": [],
+  "user": [
+    {
+      "id": 1,
+      "nome": "Rodolfo R Bortolozo",
+      "email": "rodolfobortolozo@gmail.com",
+      "senha": "123456"
+    }
+  ]
+}
