@@ -52,12 +52,9 @@ json-server --watch db.json
 
 ```
 {
-  "patient": [
-  ],
-  "consult": [
-  ],
-  "exam": [
-  ],
+  "patient": [],
+  "consult": [],
+  "exam": [],
   "user": [
     {
       "id": 1,
