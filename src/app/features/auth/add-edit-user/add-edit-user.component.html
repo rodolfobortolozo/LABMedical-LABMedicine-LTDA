@@ -1,14 +1,13 @@
-<div class="container" fxLayout="row" fxLayoutAlign="center center">
-    <div fxFlex="60%" fxFlex.sm="50%" fxFlex.xs="90%">
-
-        <mat-card>
-            <mat-card-content>
-                <mat-card-title>
-                    Cadastro de Usuário Novo
-                </mat-card-title>
+<div class="container">
+    <mat-card>
+        <mat-card-content>
+            <mat-card-title>
+                Cadastro de Usuário Novo
+            </mat-card-title>
+            <div fxLayout="row">
                 <form [formGroup]="formUser" (ngSubmit)="onSubmit()">
 
-                    <mat-form-field appearance="fill">
+                    <mat-form-field appearance="fill" class="full-width">
                         <mat-label>Nome Completo</mat-label>
                         <input matInput placeholder="Nome Completo" formControlName="nome">
 
@@ -19,7 +18,7 @@
 
                     </mat-form-field>
 
-                    <mat-form-field appearance="fill">
+                    <mat-form-field appearance="fill" class="full-width">
                         <mat-label>E-Mail</mat-label>
                         <input matInput placeholder="E-Mail" formControlName="email">
 
@@ -29,7 +28,7 @@
 
                     </mat-form-field>
 
-                    <mat-form-field appearance="fill">
+                    <mat-form-field appearance="fill" class="full-width">
                         <mat-label>Senha</mat-label>
                         <input matInput type="password" placeholder="Senha" formControlName="senha">
 
@@ -44,7 +43,7 @@
                         <button mat-raised-button color="accent" mat-dialog-close>Sair</button>
                     </div>
                 </form>
-            </mat-card-content>
-        </mat-card>
-    </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
 </div>

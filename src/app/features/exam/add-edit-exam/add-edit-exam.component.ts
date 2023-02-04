@@ -96,7 +96,10 @@ export class AddEditExamComponent {
   }
 
   saveExam(exam: Exam) {
-    this.examService.saveExam(exam).subscribe(() => this.clearForm());
+    this.examService.saveExam(exam).subscribe(() => {
+      this.notificationService.openSnackBar('Exame Cadastrado');
+      this.clearForm();
+    });
   }
 
   updateExam(exam: Exam) {

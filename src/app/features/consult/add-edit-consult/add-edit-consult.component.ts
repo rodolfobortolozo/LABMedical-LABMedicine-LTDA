@@ -96,9 +96,10 @@ export class AddEditConsultComponent {
 
   saveConsult(consult: Consult) {
     if (this.formConsult.valid) {
-      this.consultService
-        .saveConsult(consult)
-        .subscribe(() => this.clearForm());
+      this.consultService.saveConsult(consult).subscribe(() => {
+        this.notificationService.openSnackBar('Consulta Cadastrada');
+        this.clearForm();
+      });
     }
   }
 

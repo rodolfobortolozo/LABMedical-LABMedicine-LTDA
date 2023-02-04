@@ -72,4 +72,8 @@ export class LoginComponent {
   ngOnInit() {
     this.createForm(this.user);
   }
+
+  alterPassword() {
+    this.notificationService.openSnackBar('Funcionalidade em Construção!');
+  }
 }

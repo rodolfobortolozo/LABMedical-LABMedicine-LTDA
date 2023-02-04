@@ -37,8 +37,10 @@
                         <img src="../../../../assets/edit.png" width="60" height="25">
                     </a>
                 </div>
-                <div>
-                    <img src="../../../../assets/attachment.png" width="10" height="30">
+                <div *ngIf="exam.url">
+                    <a [href]="exam.url" target="_blank"> <img src="../../../../assets/attachment.png" width="10"
+                            height="30">
+                    </a>
                 </div>
             </div>
         </mat-card>
